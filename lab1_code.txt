@@ -1,0 +1,48 @@
+use myDB
+
+db;
+
+show dbs
+
+db.createCollection("Student");
+db.createCollection("Faculty");
+db.createCollection("COE");
+db.createCollection("Library");
+db.createCollection("Admission");
+db.createCollection("Festival");
+
+db.Student.insert({_id:1, StudName:"Ram", USN:"1BM17CS100", email:"ram@gmail.com", sem:7, CGPA:9.1})
+db.Student.insert({_id:2, StudName:"Karun", USN:"1BM17CS101", email:"karun@gmail.com", sem:7, CGPA:7.4})
+db.Student.insert({_id:3, StudName:"Fahad", USN:"1BM17CS102", email:"fahad@gmail.com", sem:5, CGPA:8.2})
+db.Student.insert({_id:4, StudName:"Tarun", USN:"1BM17CS103", email:"tarun@gmail.com", sem:6, CGPA:9.3})
+
+db.Faculty.insert({_fid:1, Fname:"Reshma", Dept:"Mechanical", email:"reshma@gmail.com", sem:5, subject:"Engines"})
+db.Faculty.insert({_fid:2, Fname:"Pallavi", Dept:"CSE", email:"pallavi@gmail.com", sem:7, subject:"BDA"})
+db.Faculty.insert({_fid:3, Fname:"Ramya", Dept:"Math", email:"ramya@gmail.com", sem:3, subject:"Number Theory"})
+db.Faculty.insert({_fid:4, Fname:"Vishnu", Dept:"Bio", email:"vishnu@gmail.com", sem:4, subject:"Organisms"})
+
+db.COE.insert({_eid:1,Name:"Rahul", Dept:"SEE", email:"rahul@gmail.com", phno:"2574637466", altno:"5868675489"})
+db.COE.insert({_eid:2,Name:"Abhishek", Dept:"SEE", email:"@abhishekgmail.com", phno:"334654787", altno:"8734996708"})
+db.COE.insert({_eid:3,Name:"Shubham", Dept:"CIE", email:"shubham@gmail.com", phno:"9988675543", altno:"9986645776"})
+db.COE.insert({_eid:4,Name:"Dev", Dept:"CIE", email:"dev@gmail.com", phno:"8856435679", altno:"5765456586"})
+
+db.Library.insert({_bid:1, Bname:"Physics", Bnum:"", Author:"Hawking", Genre:"Science", stock:"5"})
+db.Library.insert({_bid:2, Bname:"Chemistry", Bnum:"", Author:"NCERT", Genre:"Science", stock:"10"})
+db.Library.insert({_bid:3, Bname:"C++", Bnum:"", Author:"Peterson", Genre:"CSE", stock:"4"})
+db.Library.insert({_bid:4, Bname:"Math", Bnum:"", Author:"RD Sharma", Genre:"Mathematics", stock:"7"})
+
+db.Admission.insert({_Aid:1, Name:"Abhi", type:"CET", tenthPercent:"80", twelfth:"98", place:"Hydrabad"})
+db.Admission.insert({_Aid:2, Name:"Shaam", type:"CET", tenthPercent:"96", twelfth:"85", place:"Delhi"})
+db.Admission.insert({_Aid:3, Name:"Tanush", type:"COMEDK", tenthPercent:"85", twelfth:"80", place:"Karnataka"})
+db.Admission.insert({_Aid:4, Name:"Sahil", type:"Management", tenthPercent:"86", twelfth:"89", place:"Kerala"})
+
+db.Festival.insert({_Fid:1, Ename:"Quiz", type:"", Dept:"Math", coordinator:"Shamin", phno:"8000765756"})
+db.Festival.insert({_Fid:2, Ename:"Reverse Coding", type:"", Dept:"CSE", coordinator:"Saumya", phno:"9988067547"})
+db.Festival.insert({_Fid:3, Ename:"Hackathon", type:"", Dept:"CSE", coordinator:"Rahul", phno:"7769875609"})
+db.Festival.insert({_Fid:4, Ename:"Treasure Hunt", type:"", Dept:"Math", coordinator:"Ganesh", phno:"6557894568"})
+
+db.Student.find({StudName:"Ram"})
+
+
+
+
