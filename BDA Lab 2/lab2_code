@@ -1,0 +1,28 @@
+db.createCollection("Employee")
+db.createCollection("Department")
+
+db.Employee.insert({_id:1, EmpName:"Raj", depNum:1001, age: 21, contact:98806543})
+db.Employee.insertOne({_id:2, EmpName:"Shiv", depNum:1002, age:25, contact:96658213})
+db.Employee.insertMany([{_id:3, EmpName:"Rahul", depNum:1003, age:26, contact:98736421}, {_id:4, EmpName:"Shaam", depNum:1004, age:23, contact:98632421}, {_id:5, EmpName:"Jim", depNum:1005, age:36, contact:97736821}])
+
+db.Department.insert({_id:1, depName:"CSE", depNum:1001})
+db.Department.insertOne({_id:2, depName:"ISE", depNum:1002})
+db.Department.insertMany([{_id:3, depName:"ECE", depNum:1003}, {_id:4, depName:"EEE", depNum:1004}, {_id:5, depName:"IME", depNum:1005}])
+
+db.Employee.save({_id:6, EmpName:"Ramesh", depNum:1006, age: 31, contact:98896643})
+db.Employee.find({})
+
+db.Employee.update({_id:1, EmpName:"Raj"}, {$set:{Hobby:"Cricket"}}, {upsert:true})
+db.Employee.find({})
+
+db.Employee.update({_id:1, EmpName:"Raj"}, {$unset:{Hobby:"Cricket"}}, {upsert:true})
+db.Employee.find({})
+
+db.Employee.find({})
+db.Department.find({})
+
+db.Employee.find({depNum:{$gt:1000, $lt:1005}}, {EmpName:true, depNum:true})
+
+db.Employee.find({EmpName:{$regex:"^A"}})
+
+db.Employee.find({age:{$gt:30}})
