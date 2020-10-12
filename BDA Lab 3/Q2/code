@@ -1,0 +1,28 @@
+use accounts
+
+db.createCollection("Customer")
+
+db.Customer.insert({cust_id:1,Acc_bal:4000,Acc_type:"Z"})
+db.Customer.insert({cust_id:2,Acc_bal:1500,Acc_type:"Z"})
+db.Customer.insert({cust_id:1,Acc_bal:1200,Acc_type:"A"})
+db.Customer.insert({cust_id:3,Acc_bal:1100,Acc_type:"Z"})
+db.Customer.insert({cust_id:2,Acc_bal:3200,Acc_type:"A"})
+db.Customer.find()
+
+db.Customer.find({Acc_bal:{$gt:1200}, Acc_type:"Z"})
+
+db.Customer.aggregate([
+    {
+        $group: {
+            _id: "$cust_id",
+            min_bal: {$min: "$Acc_bal"},
+            max_bal: {$max: "$Acc_bal"}
+        }
+    }
+]);
+    
+mongoexport --db accounts --collection Customer --fields cust_id,Acc_bal,Acc_type  --type=csv --out customer.csv
+
+db.Customer.drop()
+    
+mongoimport --db accounts -collection Customer --type csv --file customer.csv
