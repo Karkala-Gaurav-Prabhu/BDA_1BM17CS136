@@ -1,0 +1,21 @@
+use college
+
+db.createCollection("student")
+
+db.student.insert({_id:1, RollNo:3,Name:"Ram", Age:15, contactNo:90865432, email_Id:"ram@gmail.com"})
+db.student.insert({_id:2, RollNo:10,Name:"Sheryl", Age:14, contactNo:90886232, email_Id:"sheryl@gmail.com"})
+db.student.insert({_id:3, RollNo:11,Name:"ABC", Age:16, contactNo:90645332, email_Id:"abc@gmail.com"})
+db.student.insert({_id:4, RollNo:15,Name:"Rahul", Age:15, contactNo:90865000, email_Id:"rahul@gmail.com"})
+db.student.insert({_id:5, RollNo:17,Name:"Nikitha", Age:16, contactNo:90833432, email_Id:"niki@gmail.com"})
+
+db.student.update({_id:2, RollNo:10},{$set:{email_Id:"sheryl123@gmail.com"}},{upsert:true})
+db.student.find()
+
+db.student.update({_id:3, RollNo:11, Name:"ABC"},{$set:{Name:"FEM"}},{upsert:true})
+db.student.find()
+
+mongoexport --db college --collection student --fields RollNo,Name,Age,contactNo,email_Id  --type=csv --out student.csv
+
+db.student.drop()
+
+mongoimport --db college --collection student --type=csv --file student.csv
